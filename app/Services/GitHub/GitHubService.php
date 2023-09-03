@@ -12,8 +12,15 @@ class GitHubService
     public function __construct(RepoRepositoryInterface $repoRepository) {
         $this->repoRepository = $repoRepository;
     }
-    public function getMyRepo( )
+    public function getMyRepo()
     {
         return $this->repoRepository->MyRepo();
     }
+
+    public function getRepo(string $owner, string $repo)
+    {
+        return $this->repoRepository->getRepo($owner, $repo);
+    }
+
+
 }
