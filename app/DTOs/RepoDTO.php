@@ -17,6 +17,8 @@ class RepoDTO
     private string $visibility;
     private DateTime|null $createdAt;
 
+    private string $owner;
+
     public function __construct(array $data)
     {
         $validator = Validator::make($data, [
@@ -27,7 +29,8 @@ class RepoDTO
             'description' => 'nullable|string|max:255',
             'url' => 'nullable|string|url',
             'visibility' => 'required|string|max:255',
-            'created_at' => 'nullable|date'
+            'created_at' => 'nullable|date',
+            'owner.login' => 'required|string|max:250'
         ]);
 
         if ($validator->fails()) {
@@ -41,6 +44,7 @@ class RepoDTO
         $this->description = $data['description'];
         $this->url = $data['url'];
         $this->visibility = $data['visibility'];
+        $this->owner = $data['owner']['login'];
     }
 
     public function fromArray(): array
@@ -49,6 +53,7 @@ class RepoDTO
             "id"=> $this->id,
             "name"=>$this->name, 
             "fullName"=>$this->fullName,
+            "owner"=>$this->owner,
             "private"=>$this->private,
             "description"=>$this->description ,
             "url"=>$this->url,
