@@ -23,7 +23,7 @@ class ReposCollectionDTO
     public function toArray(): array
     {
         return $this->repos->map(function (RepoDTO $repoDTO) {
-            return $repoDTO->fromArray();
+            return $repoDTO->toArray();
         })->toArray();
     }
 }

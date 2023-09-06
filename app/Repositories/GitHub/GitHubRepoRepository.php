@@ -11,7 +11,7 @@ class GitHubRepoRepository extends BaseGitHubRepository implements RepoRepositor
 {
 
 
-    public function MyRepo(): array
+    public function myRepo(): array
     {
         $data = $this->request("user/repos");
         // dd($data);
@@ -21,6 +21,6 @@ class GitHubRepoRepository extends BaseGitHubRepository implements RepoRepositor
     public function getRepo($owner, $repo): array
     {
         $data = $this->request("repos/$owner/$repo");
-        return (new RepoDTO($data))->fromArray();
+        return (new RepoDTO($data))->toArray();
     }
 }

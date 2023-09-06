@@ -47,7 +47,7 @@ class RepoDTO
         $this->owner = $data['owner']['login'];
     }
 
-    public function fromArray(): array
+    public function toArray(): array
     {
         return [
             "id"=> $this->id,
