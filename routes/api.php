@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/myrepos', [GitHubController::class, 'myRepos']);
 Route::get('/{owner}/{repo}', [GitHubController::class, 'getRepo']);
+Route::get('/users-stats', [GitHubController::class, 'usersWithStats']);
+
 
